@@ -10,4 +10,7 @@ public class PizzariaApplication {
 		SpringApplication.run(PizzariaApplication.class, args);
 	}
 
+	//Calcular Valor Final da pizza
+	//Calcular tempo de preparo
+	//Calcular somatório caso haja personalização
 }
