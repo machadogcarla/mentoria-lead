@@ -8,7 +8,6 @@ import javax.persistence.Id;
 public class Endereco {
     @Id
     @GeneratedValue
-
     private String cep;
     private String logradouro;
     private int numero;

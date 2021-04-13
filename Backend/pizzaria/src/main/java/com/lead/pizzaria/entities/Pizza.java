@@ -8,7 +8,6 @@ import javax.persistence.Id;
 public class Pizza {
     @Id
     @GeneratedValue
-
     private int id;
     private String sabor;
     private char tamanho;
