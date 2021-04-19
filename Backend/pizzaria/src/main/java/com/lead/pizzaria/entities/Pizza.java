@@ -66,8 +66,7 @@ public class Pizza {
         return borda_recheada;
     }
 
-    public Pizza(int id, String sabor, char tamanho, boolean extrabacon, boolean sem_cebola, boolean borda_recheada) {
-        this.id = id;
+    public Pizza(String sabor, char tamanho, boolean extrabacon, boolean sem_cebola, boolean borda_recheada) {
         this.sabor = sabor;
         this.tamanho = tamanho;
         this.extrabacon = extrabacon;

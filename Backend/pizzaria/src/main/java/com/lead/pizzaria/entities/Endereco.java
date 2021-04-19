@@ -75,8 +75,8 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(String cep, String logradouro, int numero, String complemento, String ponto_referencia, String bairro, String cidade) {
-        this.cep = cep;
+    public Endereco(String logradouro, int numero, String complemento, String ponto_referencia, String bairro, String cidade) {
+
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;

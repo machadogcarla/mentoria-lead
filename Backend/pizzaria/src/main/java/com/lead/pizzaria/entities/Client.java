@@ -15,8 +15,7 @@ public class Client {
     private String email;
     private String tel;
 
-    public Client(long id, String cpf, String nome, String email, String tel) {
-        this.id = id;
+    public Client(String cpf, String nome, String email, String tel) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;

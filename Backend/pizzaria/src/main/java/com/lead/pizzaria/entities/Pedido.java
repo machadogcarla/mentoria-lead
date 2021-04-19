@@ -15,8 +15,7 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(long num_pedido, float valor_total, int tempo_preparo) {
-        this.num_pedido = num_pedido;
+    public Pedido( float valor_total, int tempo_preparo) {
         this.valor_total = valor_total;
         this.tempo_preparo = tempo_preparo;
     }
