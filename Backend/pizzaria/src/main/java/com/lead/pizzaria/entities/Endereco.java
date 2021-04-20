@@ -8,6 +8,7 @@ import javax.persistence.Id;
 public class Endereco {
     @Id
     @GeneratedValue
+    private int id;
     private String cep;
     private String logradouro;
     private int numero;
@@ -15,6 +16,19 @@ public class Endereco {
     private String ponto_referencia;
     private String bairro;
     private String cidade;
+
+    public Endereco() {
+    }
+
+    public Endereco(String cep, String logradouro, int numero, String complemento, String ponto_referencia, String bairro, String cidade) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.ponto_referencia = ponto_referencia;
+        this.bairro = bairro;
+        this.cidade = cidade;
+    }
 
     public void setCep(String cep) {
         this.cep = cep;
@@ -44,6 +58,10 @@ public class Endereco {
         this.cidade = cidade;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getCep() {
         return cep;
     }
@@ -70,18 +88,5 @@ public class Endereco {
 
     public String getCidade() {
         return cidade;
-    }
-
-    public Endereco() {
-    }
-
-    public Endereco(String logradouro, int numero, String complemento, String ponto_referencia, String bairro, String cidade) {
-
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.ponto_referencia = ponto_referencia;
-        this.bairro = bairro;
-        this.cidade = cidade;
     }
 }

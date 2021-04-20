@@ -1,3 +1,9 @@
 2021-04-12 18:04:37 jdbc[14]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CEP[*] PEDIDO PIZZA CLIENT"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
 CEP PEDIDO PIZZA CLIENT [42001-200]
+2021-04-20 10:24:37 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "PIZZA[*] PIZZA"; expected "PREPARE"; SQL statement:
+PIZZA PIZZA [42001-200]
+2021-04-20 10:25:12 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DELETE TABLE[*] PIZZA"; expected "identifier"; SQL statement:
+delete table pizza [42001-200]
