@@ -1,6 +1,7 @@
 package com.lead.pizzaria.controllers;
 
 import com.lead.pizzaria.entities.Client;
+import com.lead.pizzaria.entities.Endereco;
 import com.lead.pizzaria.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/pizzaria-lead")
@@ -39,6 +41,13 @@ public class ClientController {
 
         }
     }
+    //busca pelo id do client
+    @GetMapping("/client/{id}")
+    public Optional<Optional<Client>> buscar(@PathVariable Long id) {
 
+        Optional<Client> cli = clientRepository.findById(id);
+        return Optional.ofNullable(cli);
+
+    }
 
 }

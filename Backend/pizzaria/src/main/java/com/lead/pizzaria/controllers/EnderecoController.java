@@ -2,6 +2,7 @@ package com.lead.pizzaria.controllers;
 
 import com.lead.pizzaria.entities.Endereco;
 import com.lead.pizzaria.entities.Pedido;
+import com.lead.pizzaria.entities.Pizza;
 import com.lead.pizzaria.repositories.EnderecoRepository;
 import com.lead.pizzaria.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/pizzaria-lead")
@@ -40,5 +42,14 @@ public class EnderecoController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 
         }
+    }
+
+    //busca pelo cep
+    @GetMapping("/end/{cep}")
+    public Optional<Optional<Endereco>> buscar(@PathVariable String cep) {
+
+        Optional<Endereco> end = endRepository.findByCep(cep);
+        return Optional.ofNullable(end);
+
     }
 }

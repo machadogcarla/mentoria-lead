@@ -2,6 +2,7 @@ package com.lead.pizzaria.controllers;
 
 import com.lead.pizzaria.entities.Client;
 import com.lead.pizzaria.entities.Pedido;
+import com.lead.pizzaria.entities.Pizza;
 import com.lead.pizzaria.repositories.ClientRepository;
 import com.lead.pizzaria.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/pizzaria-lead")
