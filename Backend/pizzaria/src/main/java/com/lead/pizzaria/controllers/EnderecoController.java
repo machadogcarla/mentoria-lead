@@ -47,9 +47,11 @@ public class EnderecoController {
     //busca pelo cep
     @GetMapping("/end/{cep}")
     public Optional<Optional<Endereco>> buscar(@PathVariable String cep) {
-
-        Optional<Endereco> end = endRepository.findByCep(cep);
-        return Optional.ofNullable(end);
-
+        try{
+            Optional<Endereco> end = endRepository.findByCep(cep);
+            return Optional.ofNullable(end);
+        }catch(Exception e){
+            return Optional.empty();
+        }
     }
 }

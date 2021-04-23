@@ -44,10 +44,12 @@ public class ClientController {
     //busca pelo id do client
     @GetMapping("/client/{id}")
     public Optional<Optional<Client>> buscar(@PathVariable Long id) {
-
-        Optional<Client> cli = clientRepository.findById(id);
-        return Optional.ofNullable(cli);
-
+        try{
+            Optional<Client> cli = clientRepository.findById(id);
+            return Optional.ofNullable(cli);
+        }catch(Exception e){
+            return Optional.empty();
+        }
     }
 
 }

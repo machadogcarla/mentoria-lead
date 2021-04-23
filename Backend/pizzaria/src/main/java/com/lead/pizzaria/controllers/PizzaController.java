@@ -2,6 +2,7 @@ package com.lead.pizzaria.controllers;
 
 import com.lead.pizzaria.entities.Pizza;
 import com.lead.pizzaria.repositories.PizzaRepository;
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,9 +47,12 @@ public class PizzaController {
     //busca pela id da pizza
     @GetMapping("/pizza/{id}")
     public Optional<Optional<Pizza>> buscar(@PathVariable Integer id) {
-
-        Optional<Pizza> pizza = pizzaRepository.findById(id);
-        return Optional.ofNullable(pizza);
+        try{
+            Optional<Pizza> pizza = pizzaRepository.findById(id);
+            return Optional.ofNullable(pizza);
+        }catch(Exception e){
+            return Optional.empty();
+        }
 
     }
 
