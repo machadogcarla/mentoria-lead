@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @RestController
@@ -41,7 +42,7 @@ public class ClientController {
 
         }
     }
-    //busca pelo id do client
+/*    //busca pelo id do client
     @GetMapping("/client/{id}")
     public Optional<Optional<Client>> buscar(@PathVariable Long id) {
         try{
@@ -50,6 +51,29 @@ public class ClientController {
         }catch(Exception e){
             return Optional.empty();
         }
+    }*/
+
+    @GetMapping("/client/{id}")
+    public ResponseEntity<Client> getClientsById(@PathVariable Long id){
+        Optional<Client> clientData = clientRepository.findById(id);
+        if(clientData.isPresent()){
+            return new ResponseEntity<>(clientData.get(), HttpStatus.OK); //converte de optional pro client
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
+
+    @GetMapping("/clientbyName")
+    public ResponseEntity<Client> getClientByName(@RequestParam String nome){
+        Client clientData = clientRepository.findByNome(nome.toLowerCase());
+        //  .findByName(nome.toLowerCase());
+        if(clientData != null){
+            return new ResponseEntity<>(clientData, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 
 }
