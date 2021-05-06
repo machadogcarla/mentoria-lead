@@ -19,3 +19,6 @@ PEDIDO [42001-200]
 2021-04-20 11:57:27 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "END" not found; SQL statement:
 select * from end [42102-200]
+2021-05-03 18:39:34 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "PIZZA[*]"; expected "PREPARE"; SQL statement:
+PIZZA [42001-200]

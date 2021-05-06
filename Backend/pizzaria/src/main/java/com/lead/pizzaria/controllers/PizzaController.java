@@ -35,8 +35,7 @@ public class PizzaController {
     @PostMapping("/pizza")
     public ResponseEntity<Pizza> createClient(@RequestBody Pizza pizza_recebido) {
         try {
-            Pizza pizza = pizzaRepository.save(new Pizza(pizza_recebido.getSabor(), pizza_recebido.getTamanho()
-            ));
+            Pizza pizza = pizzaRepository.save(new Pizza(pizza_recebido.getSabor(), pizza_recebido.getTamanho()));
             return new ResponseEntity<>(pizza, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

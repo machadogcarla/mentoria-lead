@@ -13,6 +13,9 @@ public class Pizza {
     private String sabor;
     private char tamanho;
 
+    public Pizza() {
+    }
+
     public Pizza(int id, String sabor, char tamanho) {
         this.id = id;
         this.sabor = sabor;
@@ -23,8 +26,6 @@ public class Pizza {
         this.sabor = sabor;
         this.tamanho = tamanho;
     }
-    public Pizza() {
-    }
 
     public void setSabor(String sabor) {
         this.sabor = sabor;
@@ -33,6 +34,7 @@ public class Pizza {
     public void setTamanho(char tamanho) {
         this.tamanho = tamanho;
     }
+
 
     public int getId() {
         return id;
