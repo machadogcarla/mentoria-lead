@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { PizzaDto } from '../_dtos/pizza-dto';
+import { Pizza } from '../_models/pizza';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -16,13 +17,13 @@ export class PizzaService {
   ) { }
 
   getAllPizzas() {
-    const url = 'http://localhost:8080/pizzaria-lead/pizza';
+    const url = 'http://localhost:8080/pizzaria-lead/pizzas';
     return this.http.get(url).pipe(
       map(
         (res : any)=> {
-          //console.log(res.data);
+         // console.log(res.data);
           //return res;
-          //console.log('Response', res) // vem todas as requisiçõesS
+          console.log('Response', res) // vem todas as requisiçõesS
           let data = res.data;
           //map para tratar a lista, percorrer analisar elemento por elemento
           let newData = data.map((e : any) => {
@@ -32,5 +33,6 @@ export class PizzaService {
         }
       )
     )
-;  }
-}
+;}
+  }
+

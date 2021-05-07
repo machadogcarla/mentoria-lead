@@ -8,7 +8,7 @@ import { PizzaService } from 'src/app/_services/pizza.service';
   styleUrls: ['./search-pizzas.component.scss']
 })
 export class SearchPizzasComponent implements OnInit {
-  pizzas: Pizza[]
+  pizzas: Pizza[];
 
   constructor
   (private pizzaService : PizzaService
@@ -19,12 +19,14 @@ export class SearchPizzasComponent implements OnInit {
 
   }
   loadPizzas(){
-    //recebi os dados via http
-    this.pizzaService.getAllPizzas().subscribe((res) => {
-      console.log('Page', res);
+  //nao to conseguindo pegar resultado do vetor
+    console.log("load pizzas");
+    console.log(this.pizzas);
+
+    this.pizzaService.getAllPizzas().subscribe((res) =>
+    {
       this.pizzas = res;
-     // console.log('First',res);
     });
-  }
+}
 
 }

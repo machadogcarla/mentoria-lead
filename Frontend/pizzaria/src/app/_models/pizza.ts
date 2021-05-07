@@ -1,6 +1,6 @@
 
 export class Pizza {
-  id: any;
+  id: number;
   sabor: string;
   tamanho: string;
 }
