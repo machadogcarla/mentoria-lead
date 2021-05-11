@@ -11,7 +11,8 @@ export class SearchPizzasComponent implements OnInit {
   pizzas: Pizza[];
 
   constructor
-  (private pizzaService : PizzaService
+  (
+    private pizzaService : PizzaService
   ) { }
 
   ngOnInit(): void {

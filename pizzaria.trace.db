@@ -22,3 +22,6 @@ select * from end [42102-200]
 2021-05-03 18:39:34 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "PIZZA[*]"; expected "PREPARE"; SQL statement:
 PIZZA [42001-200]
+2021-05-10 21:06:02 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "PEDIDO[*]"; expected "PREPARE"; SQL statement:
+PEDIDO [42001-200]

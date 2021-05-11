@@ -44,4 +44,33 @@ public class PedidoController {
         }
     }
 
+    //Deletar pedido.
+    @DeleteMapping("/pedido/{num_pedido}")
+    public ResponseEntity<HttpStatus> deletePedido(@PathVariable("num_pedido") long num_pedido) {
+        try{
+            pedidoRepository.deleteById(num_pedido);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //Edição
+    @PutMapping("/pedido/{num_pedido}")
+    public ResponseEntity<Pedido> updatePedido(@PathVariable("num_pedido") long num_pedido, @RequestBody Pedido pedido){
+        Optional<Pedido> pedidoData = pedidoRepository.findById(num_pedido);
+
+        if(pedidoData.isPresent()){
+            Pedido ped_temp = pedidoData.get();
+            ped_temp.setValor_total(pedido.getValor_total());
+            ped_temp.setTempo_preparo(pedido.getTempo_preparo());
+            ped_temp.setExtrabacon(pedido.isExtrabacon());
+            ped_temp.setSem_cebola(pedido.isSem_cebola());
+            ped_temp.setBorda_recheada(pedido.isBorda_recheada());
+            return new ResponseEntity<>(pedidoRepository.save(ped_temp), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

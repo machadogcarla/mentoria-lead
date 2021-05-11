@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/pizzaria-lead")
@@ -34,7 +35,7 @@ public class ClientController {
     @PostMapping("/client")
     public ResponseEntity<Client> createClient(@RequestBody Client client_recebido) {
         try{
-            Client client = clientRepository.save(new Client (client_recebido.getCpf(),
+            Client client = clientRepository.save(new Client (
                     client_recebido.getNome(), client_recebido.getEmail(), client_recebido.getTel()));
             return new ResponseEntity<>(client, HttpStatus.CREATED); //se tudo der certo vai retornar no navegador 201
         }catch (Exception e){
@@ -73,7 +74,33 @@ public class ClientController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+    //Deletar cliente.
+    @DeleteMapping("/client/{id}")
+    public ResponseEntity<HttpStatus> deleteClient(@PathVariable("id") long id) {
+        try{
+            clientRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
+    //Edição
+    @PutMapping("/client/{id}")
+    public ResponseEntity<Client> updateClient(@PathVariable("id") long id, @RequestBody Client client){
+        Optional<Client> clientData = clientRepository.findById(id);
 
+        if(clientData.isPresent()){
+            Client client_temp = clientData.get();
+
+            client_temp.setNome(client.getNome());
+            client_temp.setTel(client.getTel());
+            client_temp.setEmail(client.getEmail());
+
+            return new ResponseEntity<>(clientRepository.save(client_temp), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

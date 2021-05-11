@@ -1,5 +1,6 @@
 package com.lead.pizzaria.controllers;
 
+import com.lead.pizzaria.entities.Client;
 import com.lead.pizzaria.entities.Endereco;
 import com.lead.pizzaria.entities.Pedido;
 import com.lead.pizzaria.entities.Pizza;
@@ -54,4 +55,37 @@ public class EnderecoController {
             return Optional.empty();
         }
     }
+
+
+    //Deletar pedido.
+    @DeleteMapping("/end/{id}")
+    public ResponseEntity<HttpStatus> deleteEnd(@PathVariable("id") int id) {
+        try{
+            endRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //Edição
+    @PutMapping("/end/{id}")
+    public ResponseEntity<Endereco> updateEnd(@PathVariable("id") int id, @RequestBody Endereco endereco){
+        Optional<Endereco> endData = endRepository.findById(id);
+
+        if(endData.isPresent()){
+            Endereco end_temp = endData.get();
+            end_temp.setCep(endereco.getCep());
+            end_temp.setLogradouro(endereco.getLogradouro());
+            end_temp.setNumero(endereco.getNumero());
+            end_temp.setComplemento(endereco.getComplemento());
+            end_temp.setPonto_referencia(endereco.getPonto_referencia());
+            end_temp.setBairro(endereco.getBairro());
+            end_temp.setCidade(endereco.getCidade());
+            return new ResponseEntity<>(endRepository.save(end_temp), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

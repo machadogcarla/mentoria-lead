@@ -1,5 +1,6 @@
 package com.lead.pizzaria.controllers;
 
+import com.lead.pizzaria.entities.Client;
 import com.lead.pizzaria.entities.Pizza;
 import com.lead.pizzaria.repositories.PizzaRepository;
 import org.hibernate.service.spi.ServiceException;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/pizzaria-lead")
 public class PizzaController {
@@ -20,7 +21,7 @@ public class PizzaController {
 
 
     //select de todos os clients
-    @GetMapping("/pizza")
+    @GetMapping("/pizzas")
     public ResponseEntity<List<Pizza>> getPizzas() {
         try {
             List<Pizza> pizzas = pizzaRepository.findAll();
@@ -67,4 +68,30 @@ public class PizzaController {
         return null;
     }*/
 
+    //Deletar pizza.
+    @DeleteMapping("/pizza/{id}")
+    public ResponseEntity<HttpStatus> deletePizza(@PathVariable("id") int id) {
+        try{
+            pizzaRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //Edição
+    @PutMapping("/pizza/{id}")
+    public ResponseEntity<Pizza> updateClient(@PathVariable("id") int id, @RequestBody Pizza pizza){
+        Optional<Pizza> pizzaData = pizzaRepository.findById(id);
+
+        if(pizzaData.isPresent()){
+            Pizza pizza_temp = pizzaData.get();
+            pizza_temp.setSabor(pizza.getSabor());
+            pizza.setTamanho(pizza.getTamanho());
+
+            return new ResponseEntity<>(pizzaRepository.save(pizza_temp), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

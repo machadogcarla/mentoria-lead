@@ -10,13 +10,11 @@ public class Client {
     @Id
     @GeneratedValue
     private long id;
-    private String cpf;
     private String nome;
     private String email;
     private String tel;
 
-    public Client(String cpf, String nome, String email, String tel) {
-        this.cpf = cpf;
+    public Client(String nome, String email, String tel) {
         this.nome = nome;
         this.email = email;
         this.tel = tel;
@@ -24,10 +22,6 @@ public class Client {
 
     public Client() {
 
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public void setNome(String nome) {
@@ -46,8 +40,6 @@ public class Client {
     public long getId() {
         return id;
     }
-
-    public String getCpf() { return cpf; }
 
     public String getNome() {
         return nome;
