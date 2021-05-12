@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface ClientRepository extends JpaRepository<Client, Long> {
     //Optional<Client> findById(Long id);
 
-    @Query("SELECT c FROM Client u WHERE lower(c.nome) = :nome")
+    @Query("SELECT c FROM Client WHERE lower(c.nome) = :nome")
     Client findByNome(
             @Param("nome") String nome);
 }

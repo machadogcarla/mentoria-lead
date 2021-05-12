@@ -64,15 +64,15 @@ public class ClientController {
         }
     }
 
-    @GetMapping("/clientbyName")
-    public ResponseEntity<Client> getClientByName(@RequestParam String nome){
+    @GetMapping("/getClient")
+    public ResponseEntity<Client> getClientByName(@RequestParam String nome) {
         Client clientData = clientRepository.findByNome(nome.toLowerCase());
-        //  .findByName(nome.toLowerCase());
-        if(clientData != null){
+        if (clientData != null) {
             return new ResponseEntity<>(clientData, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
     }
     //Deletar cliente.
     @DeleteMapping("/client/{id}")

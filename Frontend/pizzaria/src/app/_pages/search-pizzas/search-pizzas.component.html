@@ -1,5 +1,12 @@
 <div class="pizza-grid">
-    <div *ngFor="let pizza of pizzas" class="mb-3">
-        <app-card></app-card>
+    <div class="card" *ngFor="let pizza of pizzas">
+        <p>Código: {{pizza.id}}</p>
+        <p>Sabor: {{ pizza.sabor }}</p>
+        <p>Tamanho: {{ pizza.tamanho }}</p>
+        <div class="buttons">
+            <button type="button" class="btn btn-outline-warning btn-alterar">Alterar</button>
+            <button type="button" class="btn btn-outline-danger btn-excluir">Excluir</button>
+        </div>
     </div>
+
 </div>

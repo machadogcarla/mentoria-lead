@@ -20,14 +20,9 @@ export class SearchPizzasComponent implements OnInit {
 
   }
   loadPizzas(){
-  //nao to conseguindo pegar resultado do vetor
-    console.log("load pizzas");
-    console.log(this.pizzas);
-
-    this.pizzaService.getAllPizzas().subscribe((res) =>
-    {
+    this.pizzaService.getAllPizzas().subscribe((res: any) => {
       this.pizzas = res;
+      console.log('Retorno do map do rxjs:', res);
     });
-}
-
+  }
 }

@@ -16,23 +16,20 @@ export class PizzaService {
     private http: HttpClient,
   ) { }
 
-  getAllPizzas() {
-    const url = 'http://localhost:8080/pizzaria-lead/pizzas';
-    return this.http.get(url).pipe(
-      map(
-        (res : any)=> {
-         // console.log(res.data);
-          //return res;
-          console.log('Response', res) // vem todas as requisiçõesS
-          let data = res.data;
-          //map para tratar a lista, percorrer analisar elemento por elemento
-          let newData = data.map((e : any) => {
-            return this.pizzaDto.convertResponseToPizza(e) //converte so para os atributos que eu quero
-          });
-          return newData;
-        }
-      )
-    )
-;}
+  inserirPizza(pizza: Pizza) {
+    const url = 'http://localhost:8080/pizzaria-lead/pizza';
+    return this.http.post(url, pizza);
   }
 
+  getAllPizzas() {
+    const url = 'http://localhost:8080/pizzaria-lead/pizzas';
+    return this.http.get(url).pipe(map((res:any) => {
+      console.log('Resposta da API:', res);
+      let novaResposta = res.map(i => {
+        console.log('Mapeando resposta:', i);
+        return i;
+      });
+      return novaResposta;
+    }));
+  }
+}

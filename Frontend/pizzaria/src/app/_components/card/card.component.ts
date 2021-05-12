@@ -7,8 +7,7 @@ import { Pizza } from 'src/app/_models/pizza';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input()
-  pizza: Pizza;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,17 @@
+<form class="card">
+    <div class="mb-3">
+        <label for="pizzaSabor" class="form-label">Sabor</label>
+        <input type="text" class="form-control" id="pizzaSabor" name="pizzaSabor" [(ngModel)]="pizza.sabor" />
+    </div>
+
+    <select class="form-select form-select-lg mb-3" name="pizzaTamanho" [(ngModel)]="pizza.tamanho">
+        <option selected>Tamanho</option>
+        <option value="P ">Pequeno</option>
+        <option value="M ">Médio</option>
+        <option value="G ">Grande</option>
+      </select>
+
+    <button type="button " class="btn btn-primary " (click)="inserirPizza() ">
+    CADASTRAR
+  </button>
+</form>
