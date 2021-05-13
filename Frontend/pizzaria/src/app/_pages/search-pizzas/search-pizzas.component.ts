@@ -9,7 +9,7 @@ import { PizzaService } from 'src/app/_services/pizza.service';
 })
 export class SearchPizzasComponent implements OnInit {
   pizzas: Pizza[];
-
+  id: number;
   constructor
   (
     private pizzaService : PizzaService
@@ -25,4 +25,19 @@ export class SearchPizzasComponent implements OnInit {
       console.log('Retorno do map do rxjs:', res);
     });
   }
+  alterarPizza(){
+
+  }
+
+  excluirPizza(id:number){
+    console.log("fui clicado")
+    console.log(id);
+    if(confirm('Você deseja excluir essa pizza?')){
+      this.pizzaService.excluirPizza(id).subscribe(res=>{
+          this.loadPizzas();
+      });
+    }
+  }
+
+
 }

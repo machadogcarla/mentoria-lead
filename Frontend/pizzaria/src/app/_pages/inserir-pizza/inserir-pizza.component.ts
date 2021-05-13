@@ -10,6 +10,7 @@ import { PizzaService } from 'src/app/_services/pizza.service';
 export class InserirPizzaComponent implements OnInit {
 
   pizza: Pizza;
+  mensagem: boolean;
 
   constructor(private pizzaService: PizzaService) { }
 
@@ -22,9 +23,14 @@ export class InserirPizzaComponent implements OnInit {
   }
 
   inserirPizza() {
-    this.pizzaService.inserirPizza(this.pizza).subscribe((res) => {
-      console.table(res);
-      this.initPizza();
-    });
+
+      this.mensagem = true;
+      this.pizzaService.inserirPizza(this.pizza).subscribe((res) => {
+        console.table(res);
+        this.initPizza();
+      }
+      );
+      console.log(this.mensagem);
+
   }
 }

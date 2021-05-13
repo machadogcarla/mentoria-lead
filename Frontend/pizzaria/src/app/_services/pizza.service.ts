@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PizzaDto } from '../_dtos/pizza-dto';
 import { Pizza } from '../_models/pizza';
 import { map } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +10,7 @@ import { map } from 'rxjs/operators';
 export class PizzaService {
 
   private pizzaDto = new PizzaDto();
+  id: number;
 
   constructor(
     private http: HttpClient,
@@ -32,4 +32,10 @@ export class PizzaService {
       return novaResposta;
     }));
   }
+
+  excluirPizza(id:number){
+    const url = 'http://localhost:8080/pizzaria-lead/pizza/';
+    return this.http.delete<Pizza>(url+id);
+  }
+
 }

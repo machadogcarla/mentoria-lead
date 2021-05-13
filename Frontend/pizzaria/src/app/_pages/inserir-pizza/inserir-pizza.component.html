@@ -1,17 +1,30 @@
 <form class="card">
     <div class="mb-3">
         <label for="pizzaSabor" class="form-label">Sabor</label>
-        <input type="text" class="form-control" id="pizzaSabor" name="pizzaSabor" [(ngModel)]="pizza.sabor" />
+        <input type="text" class="form-control" id="sabor" name="sabor" [(ngModel)]="pizza.sabor" />
     </div>
 
-    <select class="form-select form-select-lg mb-3" name="pizzaTamanho" [(ngModel)]="pizza.tamanho">
+    <select class="form-select form-select-lg mb-3" name="tamanho" [(ngModel)]="pizza.tamanho">
         <option selected>Tamanho</option>
-        <option value="P ">Pequeno</option>
-        <option value="M ">Médio</option>
-        <option value="G ">Grande</option>
+        <option value="P">Pequeno</option>
+        <option value="M">Médio</option>
+        <option value="G">Grande</option>
       </select>
 
     <button type="button " class="btn btn-primary " (click)="inserirPizza() ">
     CADASTRAR
   </button>
+
+    <div *ngIf="mensagem">
+        <div class="alert alert-success" role="alert">
+            Salvo com sucesso!
+        </div>
+    </div>
+
+    <!--<ng-template *ngIf="!mensagem">
+        <div class="alert alert-danger" role="alert">
+            Erro ao salvar, tente novamente.
+        </div>
+    </ng-template>-->
+
 </form>
