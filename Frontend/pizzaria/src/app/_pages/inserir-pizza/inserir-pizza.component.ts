@@ -27,10 +27,11 @@ export class InserirPizzaComponent implements OnInit {
       this.mensagem = true;
       this.pizzaService.inserirPizza(this.pizza).subscribe((res) => {
         console.table(res);
-        this.initPizza();
+        //this.initPizza();
       }
       );
       console.log(this.mensagem);
 
   }
+
 }

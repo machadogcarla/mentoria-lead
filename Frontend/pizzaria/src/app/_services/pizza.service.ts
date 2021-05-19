@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PizzaDto } from '../_dtos/pizza-dto';
 import { Pizza } from '../_models/pizza';
-import { map } from 'rxjs/operators';
+import { catchError, map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +36,12 @@ export class PizzaService {
   excluirPizza(id:number){
     const url = 'http://localhost:8080/pizzaria-lead/pizza/';
     return this.http.delete<Pizza>(url+id);
+  }
+
+  alterarPizza(pizza){
+    const url = 'http://localhost:8080/pizzaria-lead/pizza/';
+    //return this.http.put<Pizza>(url + id, pizza);
+      return this.http.put(url,pizza);
   }
 
 }

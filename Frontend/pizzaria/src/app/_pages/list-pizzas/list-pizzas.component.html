@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <strong>Pizza</strong>
+        </div>
+        <button type="button" routerLink="/inserirPizza" class="btn btn-primary cadastrar">Nova Pizza</button>
+        <div class="table-responsive-lg">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Sabor</th>
+                        <th scope="col">Tamanho</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pizza of pizzas">
+                        <td>{{pizza.id}}</td>
+                        <td>{{ pizza.sabor }}</td>
+                        <td>{{ pizza.tamanho }}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-warning btn-alterar" (click)="open(modalPizza)" (click)="edit(pizza)">Alterar</button></td>
+                        <td><button type=" button " class="btn btn-outline-danger btn-excluir " (click)=" excluirPizza(pizza.id) ">Excluir</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalPizza let-modal>
+    <div class="modal-header ">
+        <h4 class="modal-title " id="modal-basic-title ">Editar Pizza</h4>
+        <button type="button " class="close " aria-label="Close " (click)="modal.dismiss('Cross click') ">
+    <span aria-hidden="true ">&times;</span>
+  </button>
+    </div>
+    <div class="modal-body ">
+        <form class="card ">
+            <div class="mb-3 ">
+                <label for="pizzaSabor " class="form-label ">Sabor</label>
+                <input type="text " class="form-control " id="updatePizza.sabor " name="updatePizza.sabor " [(ngModel)]="updatePizza.sabor" />
+            </div>
+
+            <select class="form-select form-select-lg mb-3 " name="tamanho " [(ngModel)]="updatePizza.tamanho ">
+            <option selected>Tamanho</option>
+            <option value="P ">Pequeno</option>
+            <option value="M ">Médio</option>
+            <option value="G ">Grande</option>
+          </select>
+        </form>
+    </div>
+    <div class="modal-footer ">
+        <button type="button " class="btn btn-outline-dark " (click)="alterarPizza(pizza.id)">Alterar</button>
+    </div>
+</ng-template>
+
+<pre>{{ closeResult }}</pre>

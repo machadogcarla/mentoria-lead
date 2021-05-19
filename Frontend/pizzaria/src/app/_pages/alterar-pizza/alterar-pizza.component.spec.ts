@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchPizzasComponent } from './search-pizzas.component';
+import { AlterarPizzaComponent } from './alterar-pizza.component';
 
-describe('SearchPizzasComponent', () => {
-  let component: SearchPizzasComponent;
-  let fixture: ComponentFixture<SearchPizzasComponent>;
+describe('AlterarPizzaComponent', () => {
+  let component: AlterarPizzaComponent;
+  let fixture: ComponentFixture<AlterarPizzaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchPizzasComponent ]
+      declarations: [ AlterarPizzaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchPizzasComponent);
+    fixture = TestBed.createComponent(AlterarPizzaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
